@@ -119,9 +119,17 @@
 
     <script type="text/html" id="view-person-new">
       <form id="form-person-new">
-        First name: <input type="text" id="form-person-first-name" /><br>
-        Last name: <input type="text" id="form-person-last-name" /><br>
-        Email: <input type="email" id="form-person-email" /><br>
+        <label>First name*:
+          <input type="text" id="form-person-first-name" />
+        </label>
+
+        <label>Last name*:
+          <input type="text" id="form-person-last-name" />
+        </label>
+
+        <label>Email*:
+          <input type="email" id="form-person-email" />
+        </label>
 
         <input type="submit" value="create">
       </form>
@@ -143,6 +151,7 @@
     <script src="bower_components/marionette/lib/core/amd/backbone.marionette.js"></script>
     <script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
     <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
+    <script src="bower_components/backbone-validator/backbone-validator.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

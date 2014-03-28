@@ -22,17 +22,22 @@
         'click @ui.navNew': 'navigateNew',
       },
 
+      bindings: {
+        '#number-of-people': 'counter'
+      },
+
       initialize: function() {
         var that = this;
+        this.model = new Backbone.Model({ counter: 0 });
 
         App.vent.on('people:changed', function(people) {
-          that.setNumber(people);
+          that.model.set('counter', people.length);
         });
 
       },
 
-      setNumber: function(collection) {
-        this.ui.number.text(collection.length);
+      onRender: function() {
+        this.stickit();
       },
 
       navigateHome: function(e) {
@@ -50,16 +55,24 @@
     Views.NavSearch = Marionette.ItemView.extend({
       template: '#view-nav-search',
 
-      ui: {
-        search: '#input-people-search'
+      modelEvents: {
+        'change q': 'search'
       },
 
-      events: {
-        'keyup @ui.search': 'search'
+      bindings: {
+        '#input-people-search': 'q'
+      },
+
+      initialize: function() {
+        this.model = new Backbone.Model({ q: '' });
+      },
+
+      onRender: function() {
+        this.stickit();
       },
 
       search: function() {
-        this.doSearch(this.ui.search.val());
+        this.doSearch(this.model.get('q'));
       },
 
       doSearch: _.debounce(function(value) {
@@ -106,11 +119,18 @@
       tagName: 'ul'
     });
 
+
     Views.PersonNew = Marionette.ItemView.extend({
       template: '#view-person-new',
 
       events: {
         'submit form': 'submitForm'
+      },
+
+      ui: {
+        firstName: '#form-person-first-name',
+        lastName: '#form-person-last-name',
+        email: '#form-person-email'
       },
 
       bindings: {
@@ -127,10 +147,29 @@
 
       onRender: function() {
         this.stickit();
+        this.bindValidation();
+      },
+
+      onValidField: function(attrName) {
+        var element = this.ui[attrName];
+        element.removeClass('error');
+        element.parent().find('small.error').remove();
+      },
+
+      onInvalidField: function(attrName, attrValue, model) {
+        var element = this.ui[attrName];
+        var message = $('<small></small>');
+        element.parent().find('small.error').remove();
+
+        message.text(model);
+        message.addClass('error');
+        element.addClass('error');
+        element.parent().append(message);
       },
 
       submitForm: function(event) {
-        var collection = new App.Models.People();
+        var that = this,
+          collection = new App.Models.People();
 
         event.preventDefault();
         event.stopPropagation();
@@ -139,7 +178,9 @@
           collection.create(this.model);
           App.request('people:index');
         } else {
-          alert('Form is not valid, please fix!');
+          this.model.on('change', function() {
+            that.model.validate();
+          });
         }
       }
     });

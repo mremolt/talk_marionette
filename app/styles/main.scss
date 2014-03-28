@@ -4,4 +4,9 @@
 @import '../bower_components/foundation/scss/normalize';
 @import '../bower_components/foundation/scss/foundation';
 
+input.error {
+  outline: none;
+  border-color: #FF6666 !important;
+  box-shadow: 0 0 10px #FF6666 !important;
+}
 

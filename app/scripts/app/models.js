@@ -10,17 +10,27 @@
         'email': ''
       },
 
-      validate: function() {
-        // sample validation
-        if (! this.get('email') ) {
-          return 'Please fill out email!';
+      validation: {
+        firstName: {
+          blank: false,
+          message: 'First name is required.'
+        },
+        lastName: {
+          blank: false,
+          message: 'Last name is required.'
+        },
+        email: {
+          required: true,
+          format: 'email',
+          message: 'Does not match format'
         }
       },
 
       match: function(q) {
-        return this.get('firstName').indexOf(q) !== -1 ||
-          this.get('lastName').indexOf(q) !== -1 ||
-          this.get('email').indexOf(q) !== -1;
+        q = q.toLowerCase();
+        return this.get('firstName').toLowerCase().indexOf(q) !== -1 ||
+          this.get('lastName').toLowerCase().indexOf(q) !== -1 ||
+          this.get('email').toLowerCase().indexOf(q) !== -1;
       }
     });
 
