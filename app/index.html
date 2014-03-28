@@ -1,0 +1,159 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>talk_marionette</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="row" id="header">
+    </header>
+
+    <div id="main" class="row">
+      <aside class="large-3 columns" id="aside-nav">
+      </aside>
+
+      <section class="large-9 columns" id="content">
+        The default static content
+      </section>
+    </div>
+
+    <footer class="row" id="footer">
+    </footer>
+
+
+    <script type="text/html" id="layout-header">
+      <div class="large-12 columns">
+        <h1>People directory <small>It's Marionette.</small></h1>
+      </div>
+    </script>
+
+    <script type="text/html" id="layout-sidebar">
+      <section id="nav-people"></section>
+      <section id="nav-search"></section>
+      <section id="nav-content"></section>
+    </script>
+
+    <script type="text/html" id="layout-content">
+      the content
+    </script>
+
+    <script type="text/html" id="layout-footer">
+      <div class="large-12 columns">
+        <hr />
+        <div class="row">
+          <div class="large-6 columns">
+            <p>&copy; Copyright no one at all. Go to town.</p>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/html" id="view-empty">
+      <td><h3>No results</h3><td>
+    </script>
+      
+    <script type="text/html" id="view-nav-people">
+      <h5>People (<span id="number-of-people">0</span>)</h5>
+      <ul class="side-nav">
+        <li><a href="#" class="nav-home">Home</a></li>
+        <li><a href="#people/new" class="nav-new">New Person</a></li>
+      </ul>
+    </script>
+
+    <script type="text/html" id="view-nav-search">
+      <input type="search" placeholder="search me" id="input-people-search" />
+    </script>
+
+    <script type="text/html" id="view-nav-content">
+      More content
+    </script>
+
+    <script type="text/html" id="view-people">
+      <h3>Listing people</h3>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>first name</th>
+            <th>last name</th>
+            <th>email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="people-list"></tbody>
+      </table>
+    </script>
+
+    <script type="text/html" id="view-person">
+      <td><%= firstName %></td>
+      <td><%= lastName %></td>
+      <td><%= email %></td>
+      <td><button class="delete-me button small alert">delete me</button></td>
+    </script>
+
+    <script type="text/html" id="view-person-detail">
+      <li><%= firstName %></li>
+      <li><%= lastName %></li>
+      <li><%= email %></li>
+    </script>
+
+    <script type="text/html" id="view-person-new">
+      <form id="form-person-new">
+        First name: <input type="text" id="form-person-first-name" /><br>
+        Last name: <input type="text" id="form-person-last-name" /><br>
+        Email: <input type="email" id="form-person-email" /><br>
+
+        <input type="submit" value="create">
+      </form>
+    </script>
+
+
+
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="bower_components/foundation/js/foundation.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+    <script src="bower_components/marionette/lib/backbone.marionette.js"></script>
+    <script src="bower_components/marionette/lib/core/amd/backbone.marionette.js"></script>
+    <script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
+    <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/app/utils.js"></script>
+    <script src="scripts/app/models.js"></script>
+    <script src="scripts/app/controllers.js"></script>
+    <script src="scripts/app/layouts.js"></script>
+    <script src="scripts/app/views.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
