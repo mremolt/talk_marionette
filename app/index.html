@@ -78,7 +78,7 @@
     </script>
       
     <script type="text/html" id="view-nav-people">
-      <h5>People (<span id="number-of-people">0</span>)</h5>
+      <h5>People (<span id="number-of-people" data-attribute="counter"></span>)</h5>
       <ul class="side-nav">
         <li><a href="#" class="nav-home">Home</a></li>
         <li><a href="#people/new" class="nav-new">New Person</a></li>
@@ -125,15 +125,15 @@
     <script type="text/html" id="view-person-new">
       <form id="form-person-new">
         <label>First name*:
-          <input type="text" id="form-person-first-name" />
+          <input type="text" id="form-person-first-name" data-attribute="firstName"  />
         </label>
 
         <label>Last name*:
-          <input type="text" id="form-person-last-name" />
+          <input type="text" id="form-person-last-name" data-attribute="lastName" />
         </label>
 
         <label>Email*:
-          <input type="email" id="form-person-email" />
+          <input type="email" id="form-person-email" data-attribute="email" />
         </label>
 
         <input type="submit" value="create">
@@ -153,6 +153,7 @@
     <script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
     <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
     <script src="bower_components/backbone-validator/backbone-validator.js"></script>
+    <script src="bower_components/backbone.modelbinder/Backbone.ModelBinder.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

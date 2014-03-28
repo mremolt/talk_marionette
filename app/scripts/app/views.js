@@ -29,6 +29,7 @@
       initialize: function() {
         var that = this;
         this.model = new Backbone.Model({ counter: 0 });
+        this._modelBinder = new Backbone.ModelBinder();
 
         App.vent.on('people:changed', function(people) {
           that.model.set('counter', people.length);
@@ -37,7 +38,7 @@
       },
 
       onRender: function() {
-        this.stickit();
+        this._modelBinder.bind(this.model, this.el, null, { boundAttribute: 'data-attribute' });
       },
 
       navigateHome: function(e) {
@@ -133,20 +134,15 @@
         email: '#form-person-email'
       },
 
-      bindings: {
-        '#form-person-first-name': 'firstName',
-        '#form-person-last-name':  'lastName',
-        '#form-person-email':      'email'
-      },
-
       initialize: function() {
         this.model = new App.Models.Person();
+        this._modelBinder = new Backbone.ModelBinder();
         // for demo of binding
         window.model = this.model;
       },
 
       onRender: function() {
-        this.stickit();
+        this._modelBinder.bind(this.model, this.el, null, { boundAttribute: 'data-attribute' });
         this.bindValidation();
       },
 
