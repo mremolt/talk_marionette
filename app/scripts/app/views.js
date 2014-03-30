@@ -22,10 +22,6 @@
         'click @ui.navNew': 'navigateNew',
       },
 
-      bindings: {
-        '#number-of-people': 'counter'
-      },
-
       initialize: function() {
         var that = this;
         this.model = new Backbone.Model({ counter: 0 });
@@ -38,7 +34,11 @@
       },
 
       onRender: function() {
-        this._modelBinder.bind(this.model, this.el, null, { boundAttribute: 'data-attribute' });
+        this._modelBinder.bind(this.model, this.el, null, { boundAttribute: 'data-attr' });
+      },
+
+      onClose: function() {
+        this._modelBinder.unbind();
       },
 
       navigateHome: function(e) {
@@ -60,16 +60,20 @@
         'change q': 'search'
       },
 
-      bindings: {
-        '#input-people-search': 'q'
-      },
-
       initialize: function() {
         this.model = new Backbone.Model({ q: '' });
+        this._modelBinder = new Backbone.ModelBinder();
       },
 
       onRender: function() {
-        this.stickit();
+        this._modelBinder.bind(this.model, this.el, null, {
+          boundAttribute: 'data-attr',
+          changeTriggers: { '': 'change keyup' }
+        });
+      },
+
+      onClose: function() {
+        this._modelBinder.unbind();
       },
 
       search: function() {
@@ -96,6 +100,15 @@
         'click': 'showDetail'
       },
 
+      onRender: function() {
+        this._modelBinder = new Backbone.ModelBinder();
+        this._modelBinder.bind(this.model, this.el, null, { boundAttribute: 'data-attr' });
+      },
+
+      onClose: function() {
+        this._modelBinder.unbind();
+      },
+
       delete: function(event) {
         // general click on whole tr
         event.stopPropagation();
@@ -117,7 +130,17 @@
 
     Views.PersonDetail = Marionette.ItemView.extend({
       template: '#view-person-detail',
-      tagName: 'ul'
+      tagName: 'ul',
+
+      onRender: function() {
+        this._modelBinder = new Backbone.ModelBinder();
+        this._modelBinder.bind(this.model, this.el, null, { boundAttribute: 'data-attr' });
+      },
+
+      onClose: function() {
+        this._modelBinder.unbind();
+      }
+
     });
 
 
@@ -142,8 +165,15 @@
       },
 
       onRender: function() {
-        this._modelBinder.bind(this.model, this.el, null, { boundAttribute: 'data-attribute' });
         this.bindValidation();
+        this._modelBinder.bind(this.model, this.el, null, {
+          boundAttribute: 'data-attr',
+          changeTriggers: { '': 'change keyup' }
+        });
+      },
+
+      onClose: function() {
+        this._modelBinder.unbind();
       },
 
       onValidField: function(attrName) {
