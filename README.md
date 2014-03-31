@@ -1,6 +1,6 @@
 # TOC
 
-## Projekt-Setup
+## Project setup
 
 * yeoman + webapp
 * bower
@@ -70,7 +70,7 @@
 
 ## Lessons learned
 
-* write a lot! of small Views
+* write a lot! of small Views (no loops in template!)
 * use vent/reqres to connect parts of the app
 * routing is just for bookmarking/deeplinks
 
@@ -96,6 +96,7 @@
   via plugins or not at all
 * very OO centric (imho. JS works better with a functional style) +Angular,
   -Ember
+* weak models compared to Ember
 
 
 
