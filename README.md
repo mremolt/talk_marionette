@@ -66,3 +66,40 @@
 * localStorage
 * Live model binding
 * Form validation
+
+
+## Lessons learned
+
+* write a lot! of small Views
+* use vent/reqres to connect parts of the app
+* routing is just for bookmarking/deeplinks
+
+
+# Comparing with Ember/Angular
+
+## The good
+
+* little to no magic (far less WTF/sec)
+* a few sensible naming conventions
+* everything is there to override and configure (different templating, 3 lines
+  of JS)
+* the framework does not stand in your way
+* healthy plugin ecosystem
+* powerful models compared to Angular
+* excellent project modularization/structure
+
+
+## The bad
+
+* you gonna write more code than using Angular or especially Ember
+* advanced features (live binding, model relations, directives ...) are only available
+  via plugins or not at all
+* very OO centric (imho. JS works better with a functional style) +Angular,
+  -Ember
+
+
+
+
+
+
+
