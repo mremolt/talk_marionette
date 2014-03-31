@@ -1,6 +1,6 @@
-= TOC
+# TOC
 
-== Projekt-Setup
+## Projekt-Setup
 
 * yeoman + webapp
 * bower
@@ -14,7 +14,7 @@
 * templates (index.html)
 
 
-== Vendor
+## Vendor
 
 * Marionette (+ Backbone, jQuery, Underscore)
 * bsckbone.localstorage
@@ -22,34 +22,34 @@
 * backbone.validator
 
 
-== Marionette Application
+## Marionette Application
 
 * Initializer
 * Events (App.vent)
 * Regions
 
 
-== Marionette Module
+## Marionette Module
 
 * Namespaces
 * Vendor import
 * can combine with AMD (not in this project)
 
 
-== Backbone Models & Collections
+## Backbone Models & Collections
 
 * Models
 * Collections
 
 
-== Marionette Controller & Router
+## Marionette Controller & Router
 
 * Router (just on init page load)
 * Controller
 * Marionette Request/Response
 
 
-== Marionette Views
+## Marionette Views
 
 * Layouts
 * ItemView
@@ -61,7 +61,7 @@
 * ui
 
 
-== Specials
+## Specials
 
 * localStorage
 * Live model binding
